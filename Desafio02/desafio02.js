@@ -1,8 +1,8 @@
 var timeOfStudent = document.getElementById('timeOfStudent')
-let list = document.querySelector('select#adc')
+var list = document.querySelector('select#adc')
 var totalTime = []
 
-function CheckEmplyCamp(n) {
+const CheckEmplyCamp = (n) => {
   if (n == '') {
     return true
   } else {
@@ -10,15 +10,15 @@ function CheckEmplyCamp(n) {
   }
 }
 
-function SomatotalTime(n) {
-  let soma = 0
+const SumAmount = (n) => {
+  let sum = 0
   for (let pos in n) {
-    soma += n[pos]
+    sum += n[pos]
   }
-  return soma
+  return sum
 }
 
-function adicionar() {
+const Add = () => {
   if (!CheckEmplyCamp(timeOfStudent.value)) {
     totalTime.push(Number(timeOfStudent.value))
     let item = document.createElement('option')
@@ -31,13 +31,12 @@ function adicionar() {
   timeOfStudent.focus()
 }
 
-
-function verificar(NumberOfStudents) {
+const Check = (NumberOfStudents) => {
   if (CheckEmplyCamp(totalTime.value)) {
     window.alert('Adicione ao menos um horário antes de verificar!')
   } else {
     var NumberOfStudents = parseFloat(prompt('Qual é o número mínimo de alunos?'))
-    if (NumberOfStudents > totalTime.length || SomatotalTime(totalTime) > 0) {
+    if (NumberOfStudents > totalTime.length || SumAmount(totalTime) > 0) {
       window.alert('Aula cancelada')
     } else {
       window.alert('Aula normal')
